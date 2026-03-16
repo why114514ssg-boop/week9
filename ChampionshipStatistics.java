@@ -22,7 +22,7 @@ public final class ChampionshipStatistics {
         return ChampionshipManager.getTotalRaces();
     }
 }
-// 统计锦标赛领先车手
+
 public static Driver getChampionshipLeader() {
     ChampionshipManager manager = ChampionshipManager.getInstance();
     List<Driver> drivers = manager.getDrivers();
