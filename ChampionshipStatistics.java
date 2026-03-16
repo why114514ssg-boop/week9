@@ -21,7 +21,6 @@ public final class ChampionshipStatistics {
     public static int countTotalRacesHeld() {
         return ChampionshipManager.getTotalRaces();
     }
-}
 
 public static Driver getChampionshipLeader() {
     ChampionshipManager manager = ChampionshipManager.getInstance();
@@ -54,4 +53,5 @@ public static String getMostSuccessfulCountry() {
         }
     }
     return topCountry;
+}
 }
