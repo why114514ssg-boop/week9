@@ -1,25 +1,15 @@
-public abstract class RallyCar {
-    private final String make;
-    private final String model;
-    private final int horsepower;
+public class AsphaltCar extends RallyCar {
+    private final double tireGrip;
 
-    public RallyCar(String make, String model, int horsepower) {
-        this.make = make;
-        this.model = model;
-        this.horsepower = horsepower;
+    public AsphaltCar(String make, String model, int horsepower, double tireGrip) {
+        super(make, model, horsepower);
+        this.tireGrip = tireGrip;
     }
 
-    public int getHorsepower() {
-        return horsepower;
+    @Override
+    public double calculatePerformance() {
+        double powerContribution = getHorsepower() * 0.9;
+        double gripContribution = tireGrip * 2.0;
+        return powerContribution + gripContribution;
     }
-
-    public String getModel() {
-        return model;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public abstract double calculatePerformance();
 }
