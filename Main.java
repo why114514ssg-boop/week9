@@ -2,38 +2,33 @@ public class Main {
     public static void main(String[] args) {
         ChampionshipManager manager = ChampionshipManager.getInstance();
 
-        // 创建车辆
+       
         RallyCar asphaltCar = new AsphaltCar("Toyota", "GR Yaris", 300, 1.2);
         RallyCar gravelCar = new GravelCar("Ford", "Fiesta WRC", 280, 0.8);
 
-        // 创建车手
+        
         Driver driver1 = new Driver("Sébastien Ogier", "France", asphaltCar);
         Driver driver2 = new Driver("Kalle Rovanperä", "Finland", gravelCar);
         Driver driver3 = new Driver("Ott Tänak", "Estonia", asphaltCar);
 
-        // 注册车手
         manager.registerDriver(driver1);
         manager.registerDriver(driver2);
         manager.registerDriver(driver3);
 
-        // 创建第一场赛事（沥青）
         RallyRaceResult race1 = new RallyRaceResult("Monte Carlo Rally", "Monaco");
         race1.recordResult(driver1, 1, 25);
         race1.recordResult(driver3, 2, 18);
         race1.recordResult(driver2, 3, 15);
         manager.addRaceResult(race1);
 
-        // 车手切换车辆
         driver2.setCar(asphaltCar);
 
-        // 创建第二场赛事（砂石）
         RallyRaceResult race2 = new RallyRaceResult("Sweden Rally", "Sweden");
         race2.recordResult(driver2, 1, 25);
         race2.recordResult(driver1, 2, 18);
         race2.recordResult(driver3, 3, 15);
         manager.addRaceResult(race2);
 
-        // 打印结果
         System.out.println("=== Race Results ===");
         race1.printResults();
         race2.printResults();
@@ -41,8 +36,11 @@ public class Main {
         System.out.println("\n=== Championship Statistics ===");
         System.out.println("Total Drivers: " + ChampionshipManager.getTotalDrivers());
         System.out.println("Total Races: " + ChampionshipStatistics.countTotalRacesHeld());
-        System.out.printf("Average Points per Driver: %.2f%n",
-                ChampionshipStatistics.calculateAveragePointsPerDriver());
+        System.out.printf("Average Points per Driver: %.2f%n", ChampionshipStatistics.calculateAveragePointsPerDriver());
+        System.out.println("Most Successful Country: " + ChampionshipStatistics.getMostSuccessfulCountry());
+        Driver leader = ChampionshipStatistics.getChampionshipLeader();
+        System.out.println("\n===== CHAMPIONSHIP LEADER =====");
+        System.out.printf("%s with %d points%n", leader.getName(), leader.getTotalPoints());
 
         System.out.println("\n=== Driver Standings ===");
         for (Driver driver : manager.getDrivers()) {
